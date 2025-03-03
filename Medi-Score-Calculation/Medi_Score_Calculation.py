@@ -1,6 +1,4 @@
 from enum import Enum
-from itertools import filterfalse
-from tkinter import SE
 from typing import Any
 
 ##test data to be used (change through each test)
@@ -20,7 +18,7 @@ class AirOxygen(Enum):
 ##sets enum value for if patient is conscious or not
 class Consciousness(Enum):
     alert = 0
-    CVPU = 3
+    cvpu = 3
 
 ##creates an object which stores the respiration of the patient and assigns the score
 class RespirationRange:
@@ -97,13 +95,11 @@ class Temperature:
         return self.score
 
 
-def processTestData(testData):
+def processTestData(airOxygenVal, conscious, respirationValue, bloodOxygenValue, temperatureValue):
     ## sort the data into relevant variables
-    airOxygen = AirOxygen[testData[0]]  
-    consciousness = Consciousness[testData[1]]  
-    respirationValue = testData[2]  
-    bloodOxygenValue = testData[3]  
-    temperatureValue = testData[4]  
+    airOxygen = AirOxygen[airOxygenVal]  
+    consciousness = Consciousness[conscious]
+
 
     ##initialises the objects
     respirationRange = RespirationRange()
@@ -129,6 +125,17 @@ def processTestData(testData):
     MediScore.updateScore(consciousness.value)
     MediScore.updateScore(airOxygen.value)
 
-processTestData(testData)
+def main():
+    airOxygen = input("Enter air or oxygen: ").lower()
+    conscious = input("Enter alert or CVPU: ").lower()
+    respirationValue = int(input("Enter respiration range: "))
+    bloodOxygenValue = int(input("Enter blood oxygen %: "))
+    temperatureValue = float(input("Enter temperature: "))
+    processTestData(airOxygen, conscious, respirationValue, bloodOxygenValue, temperatureValue)
+    print("Total MediScore:", MediScore.score)
 
-print("Total MediScore:", MediScore.score)
+main()
+
+
+
+
