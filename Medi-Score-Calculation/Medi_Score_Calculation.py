@@ -1,9 +1,6 @@
 from enum import Enum
 from typing import Any
 
-##test data to be used (change through each test)
-testData = ["oxygen", "alert", 14, 93, 37.2]
-
 class MediScore:
     score = 0
     @classmethod
@@ -135,7 +132,5 @@ def main():
     print("Total MediScore:", MediScore.score)
 
 main()
-
-
 
 
