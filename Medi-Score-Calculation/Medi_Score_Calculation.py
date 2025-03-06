@@ -179,8 +179,4 @@ def main():
         with open(fileName, 'w') as patientFile:
              patientFile.write(str(finalScore) + " " + str(currentDate))
 
-
-
-
-
 main()
