@@ -164,7 +164,7 @@ def main():
         previousScore, previousDate, previousTime = mostRecent.split()
         previousScore = int(previousScore)  
         previousDate = datetime.strptime(previousDate, "%Y-%m-%d")
-        previousTime = datetime.strptime(previousTime, "%H:%M:%S").time()
+        previousTime = datetime.strptime(previousTime, "%H:%M:%S.%f").time()
         previousDateTime = datetime.combine(previousDate, previousTime)
 
         ##clalculates the time difference
